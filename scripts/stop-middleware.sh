@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-pushd ..
-docker-compose down
-popd
+set -o errexit
+set -o pipefail
+set -o nounset
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+cd "$script_dir/.."
+docker-compose down
